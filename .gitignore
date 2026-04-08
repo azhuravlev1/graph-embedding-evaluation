@@ -1,0 +1,15 @@
+# Portfolio hygiene
+.DS_Store
+**/.ipynb_checkpoints/
+
+# Hide assignment-labeled originals
+Assignment*.ipynb
+Assignment*.pdf
+resume_summary_private.txt
+
+# Large/generated local artifacts
+_embed
+_embed_best
+_embed_worst
+_stderr
+grid_results_partial.csv
