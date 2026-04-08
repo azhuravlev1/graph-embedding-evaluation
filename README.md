@@ -22,9 +22,9 @@ and evaluates embedding quality with divergence metrics and clustering recovery.
   - AGRI/GAM-style agreement metric
 - 2D projection with UMAP for visual diagnostics
 
-## Why this project is highly relevant
+## Relevancy
 
-This is the strongest DS/ML portfolio project in the set because it demonstrates:
+This project demonstrates:
 - representation learning on graphs,
 - model comparison and robustness analysis,
 - reproducible metric-driven evaluation.
