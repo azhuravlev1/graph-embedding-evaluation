@@ -1,38 +1,19 @@
-# Graph Embedding Evaluation and Stability Analysis
+# Graph Embedding Evaluation
 
-Primary analysis notebook: `analysis.ipynb`
+How well do node embeddings keep a graph's community structure? This project compares two embedding methods, HOPE (based on Katz similarity) and Node2Vec, on two synthetic graphs with known communities and on the European high-voltage power grid. It was an assignment for DS8014 (Graph Mining) at Toronto Metropolitan University. All the code is in `analysis.ipynb`.
 
-## Project Overview
+## How embeddings are judged
 
-This project evaluates graph embeddings for community-structure preservation across synthetic benchmark graphs and real infrastructure graphs.
+Each embedding is evaluated in two ways. The first is the divergence score from the CGE framework (global and local Jensen-Shannon divergence), which checks how well distances in the embedding reflect the graph's community structure, without needing any labels. The second is to cluster the embedded nodes with KMeans and compare the clusters with the true communities using AMI, ARI and a graph-aware agreement measure. UMAP projections to 2D are used to look at the best and worst embeddings side by side.
 
-It compares:
-- **HOPE** (Katz similarity)
-- **Node2Vec**
+## Experiments
 
-and evaluates embedding quality with divergence metrics and clustering recovery.
+[ABCD benchmark graphs](abcd-embedding-quality/README.md). ABCD graphs come with planted communities, so embeddings of different methods and dimensions can be compared against a known answer.
 
-## Methods and Metrics
+[Ring of cliques](ring-of-cliques-embedding-stability/README.md). A small graph of dense cliques joined in a ring. The best and worst embeddings were almost identical in local divergence (about 0.094 vs 0.095), so the embeddings were stable on this kind of graph.
 
-- Embedding generation across multiple dimensions
-- Divergence evaluation with `CGE` (JSD / local JSD)
-- Clustering quality via KMeans on embeddings using:
-  - AMI
-  - ARI
-  - AGRI/GAM-style agreement metric
-- 2D projection with UMAP for visual diagnostics
+[European power grid](european-grid-embedding-robustness/README.md). The giant component of the European high-voltage grid, a large real infrastructure network. Repeated embeddings were scored the same way, and the best and worst UMAP projections looked similar, so the global structure was preserved consistently.
 
-## Relevancy
+## Files
 
-This project demonstrates:
-- representation learning on graphs,
-- model comparison and robustness analysis,
-- reproducible metric-driven evaluation.
-
-## Subprojects
-
-- [`abcd-embedding-quality`](abcd-embedding-quality/README.md)
-- [`ring-of-cliques-embedding-stability`](ring-of-cliques-embedding-stability/README.md)
-- [`european-grid-embedding-robustness`](european-grid-embedding-robustness/README.md)
-
-
+`analysis.ipynb` runs all three experiments. The `*.edgelist` and `*.communities` files are the inputs in CGE format, and the `gridkit_europe-highvoltage-*` files are the original grid data from GridKit. Requirements: Python with igraph, networkx, scikit-learn and umap-learn, plus the CGE scripts used in the course.

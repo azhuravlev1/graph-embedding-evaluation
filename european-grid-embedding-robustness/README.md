@@ -1,25 +1,5 @@
-# European Power Grid Embedding Robustness
+# European power grid
 
-## Objective
+The giant component of the European high-voltage power grid (GridKit data), converted to CGE input files and embedded repeatedly. The best and worst embeddings give similar UMAP pictures, so the large-scale structure of the grid is preserved consistently across runs.
 
-Test embedding behavior on a large real-world infrastructure graph (European high-voltage power grid giant component).
-
-## Approach
-
-- Built graph and extracted giant component.
-- Created CGE input files (`grid.edgelist`, `grid.communities`).
-- Generated repeated embeddings and tracked quality metrics.
-- Visualized best/worst embedding projections with UMAP.
-
-## Key Insight
-
-- The notebook indicates relatively close best/worst projection behavior, suggesting non-trivial robustness in preserving global structure on this network.
-
-## Why this matters
-
-Demonstrates transition from synthetic benchmark evaluation to real-world infrastructure data, which is critical for practical analytics credibility.
-
-## Reproducibility
-
-See notebook: `../analysis.ipynb` (European grid section)
-
+Code: the European grid section of [`../analysis.ipynb`](../analysis.ipynb).
